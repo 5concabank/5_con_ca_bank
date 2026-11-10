@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#092b55">
+<title>5 Con Cá Bank – Ngân hàng số</title>
+<style>
+:root{--navy:#092b55;--blue:#1769d2;--cyan:#22b8cf;--bg:#f3f7fc;--ink:#17263c;--muted:#68788e;--line:#e4ebf4;--white:#fff;--green:#138a61;--gold:#ffcf5a;--shadow:0 12px 35px rgba(20,55,95,.09)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--ink)}
+button,input,select{font:inherit}button{cursor:pointer}.app{min-height:100vh;display:grid;grid-template-columns:250px 1fr}
+.sidebar{background:linear-gradient(180deg,#08264c,#0b3d72);color:#fff;padding:25px 18px;display:flex;flex-direction:column;gap:24px}
+.brand{display:flex;align-items:center;gap:11px;padding:0 8px}.logo{width:45px;height:45px;border-radius:15px;background:linear-gradient(135deg,#4ce0d0,#2284ed);display:grid;place-items:center;font-size:24px;box-shadow:0 7px 20px #001d3c66}.brand strong{display:block;font-size:17px}.brand small{color:#b9d2ef;font-size:11px;letter-spacing:1.4px}
+.nav-label{font-size:10px;letter-spacing:1.5px;color:#8eafd3;padding:0 12px;margin:5px 0}.nav{display:grid;gap:7px}.nav button{border:0;color:#d5e5f7;background:transparent;text-align:left;padding:12px 13px;border-radius:12px;display:flex;align-items:center;gap:12px;font-weight:600}.nav button:hover,.nav button.active{background:#ffffff1b;color:#fff}.nav .ico{width:22px;text-align:center;font-size:18px}.side-note{margin-top:auto;background:#ffffff12;border:1px solid #ffffff20;border-radius:16px;padding:15px;color:#d6e8fa;font-size:12px;line-height:1.6}
+main{min-width:0;padding:27px clamp(18px,4vw,48px) 50px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:28px}.hello h1{font-size:25px;margin:0 0 5px;color:var(--navy)}.hello p{margin:0;color:var(--muted);font-size:13px}.user{display:flex;align-items:center;gap:10px;background:#fff;padding:8px 12px;border:1px solid var(--line);border-radius:30px;font-size:13px;font-weight:700}.avatar{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:#d9efff;color:#07539b}
+.page{display:none}.page.active{display:block}.grid{display:grid;grid-template-columns:1.45fr 1fr;gap:18px}.card{background:#fff;border:1px solid var(--line);border-radius:19px;padding:21px;box-shadow:var(--shadow)}.balance{background:linear-gradient(125deg,#092b55,#1267b5 70%,#21a8bd);color:#fff;position:relative;overflow:hidden;min-height:205px}.balance:after{content:"";position:absolute;width:240px;height:240px;border:1px solid #ffffff22;border-radius:50%;right:-60px;top:-80px;box-shadow:0 0 0 28px #ffffff0b,0 0 0 58px #ffffff08}.eyebrow{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;opacity:.75}.money{font-size:34px;font-weight:800;margin:13px 0 7px;letter-spacing:.3px}.balance-foot{display:flex;justify-content:space-between;align-items:end;gap:10px;position:relative;z-index:1}.balance-foot small{color:#d4e8ff}.pill{border:1px solid #ffffff55;border-radius:30px;padding:7px 12px;font-size:11px}
+.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:0 0 15px}.section-head h2{font-size:17px;margin:0;color:var(--navy)}.muted{color:var(--muted);font-size:12px}.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.quick button{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px 8px;color:var(--ink);font-weight:700;font-size:12px;box-shadow:0 5px 18px #153b6410}.quick button:hover{border-color:#8cb9ed;transform:translateY(-2px)}.quick span{display:grid;place-items:center;margin:0 auto 8px;width:39px;height:39px;background:#eaf4ff;border-radius:13px;font-size:20px}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stat{background:#f7faff;border-radius:14px;padding:14px}.stat b{display:block;font-size:17px;color:var(--navy);margin-top:5px}
+.list{display:grid;gap:0}.tx{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}.tx:last-child{border:0}.tx-icon{width:39px;height:39px;border-radius:13px;background:#edf5ff;display:grid;place-items:center;font-size:18px}.tx-info{flex:1}.tx-info b{font-size:13px;display:block}.tx-info small{font-size:11px;color:var(--muted)}.amount{font-weight:800;font-size:13px}.positive{color:var(--green)}.negative{color:#d04b55}
+.banner{padding:20px;border-radius:18px;background:linear-gradient(110deg,#e6f8ff,#f0f4ff);display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:18px}.banner h3{margin:0 0 5px;color:var(--navy)}.banner p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}
+.btn{border:0;background:var(--blue);color:#fff;padding:11px 16px;border-radius:11px;font-weight:700;font-size:13px}.btn:hover{filter:brightness(.94)}.btn.secondary{background:#eaf3ff;color:#145ca9}.btn.ghost{background:#f2f5f9;color:#53647a}.btn.green{background:var(--green)}
+.form-card{max-width:780px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:grid;gap:7px;margin-bottom:13px}.field label{font-size:12px;font-weight:700;color:#40536c}.field input,.field select{width:100%;padding:12px 13px;border:1px solid #dce5ef;border-radius:10px;background:#fbfdff;color:var(--ink);outline:none}.field input:focus,.field select:focus{border-color:#4c96e8;box-shadow:0 0 0 3px #4c96e81c}.hint{font-size:11px;color:var(--muted);line-height:1.5}.result{display:none;margin-top:16px;background:#eaf8f2;border:1px solid #c8eadb;border-radius:13px;padding:15px;color:#176346;font-size:13px;line-height:1.6}.result.show{display:block}.steps{display:flex;gap:8px;margin:0 0 18px}.step{flex:1;height:5px;border-radius:9px;background:#e5edf6}.step.done{background:#20a4ba}
+.product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.product{border:1px solid var(--line);border-radius:17px;padding:18px;background:#fff}.product .big{font-size:27px}.product h3{margin:10px 0 6px;color:var(--navy)}.product p{font-size:12px;color:var(--muted);line-height:1.6;min-height:38px}
+.table{width:100%;border-collapse:collapse;font-size:12px}.table th,.table td{text-align:left;padding:12px 8px;border-bottom:1px solid var(--line)}.table th{color:var(--muted);font-weight:600}
+footer{text-align:center;color:#8b98a9;font-size:10px;margin-top:28px;line-height:1.6}.notice{border-left:3px solid var(--gold);padding:10px 13px;background:#fff9e9;color:#78602a;font-size:11px;border-radius:0 9px 9px 0;line-height:1.5;margin-top:15px}
+.mobile-menu{display:none}
+@media(max-width:850px){.app{grid-template-columns:1fr}.sidebar{position:sticky;top:0;z-index:5;padding:10px 12px;display:flex;flex-direction:row;align-items:center;justify-content:space-between}.brand{padding:0}.logo{width:37px;height:37px}.brand strong{font-size:14px}.brand small{font-size:9px}.nav-label,.side-note{display:none}.nav{display:flex;gap:3px}.nav button{padding:9px;border-radius:10px;font-size:0}.nav .ico{font-size:17px}.grid{grid-template-columns:1fr}.topbar{margin-bottom:18px}.quick{grid-template-columns:repeat(4,1fr)}main{padding-top:20px}}
+@media(max-width:520px){.hello h1{font-size:21px}.user span:last-child{display:none}.quick{gap:7px}.quick button{padding:12px 4px;font-size:10px}.quick span{width:34px;height:34px}.form-grid,.product-grid{grid-template-columns:1fr}.money{font-size:29px}.card{padding:16px}.stat-row{gap:7px}.stat{padding:10px}.stat b{font-size:14px}.banner{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="logo">🐟</div><div><strong>5 CON CÁ BANK</strong><small>NGÂN HÀNG SỐ</small></div></div>
+  <div style="flex:1">
+    <div class="nav-label">MENU CHÍNH</div>
+    <nav class="nav">
+      <button class="active" data-page="home"><span class="ico">⌂</span>Tổng quan</button>
+      <button data-page="account"><span class="ico">👤</span>Mở tài khoản</button>
+      <button data-page="cards"><span class="ico">💳</span>Thẻ ngân hàng</button>
+      <button data-page="savings"><span class="ico">🌱</span>Gửi tiết kiệm</button>
+      <button data-page="loan"><span class="ico">🏦</span>Vay vốn</button>
+      <button data-page="support"><span class="ico">💬</span>Hỗ trợ</button>
+    </nav>
+  </div>
+  <div class="side-note">✨ <b>Ngân hàng trong tầm tay</b><br>Đơn giản – An toàn – Tiện lợi.<br><br><span style="opacity:.7">Phiên bản mô phỏng phục vụ học tập.</span></div>
+</aside>
+<main>
+<header class="topbar">
+  <div class="hello"><h1 id="greeting">Xin chào, Hà! 👋</h1><p>Chúc bạn một ngày quản lý tài chính thật hiệu quả.</p></div>
+  <div class="user"><div class="avatar">H</div><span>Lê Thị Hà</span><span>⌄</span></div>
+</header>
+
+<section class="page active" id="home">
+  <div class="grid">
+    <div class="card balance">
+      <div class="eyebrow">Số dư tài khoản mô phỏng</div>
+      <div class="money" id="balance">25.680.000 ₫</div>
+      <div class="balance-foot"><div><small>Số tài khoản</small><br><b>•••• •••• 2600</b></div><span class="pill">● Đang hoạt động</span></div>
+    </div>
+    <div class="card">
+      <div class="section-head"><h2>Tài chính của bạn</h2><span class="muted">Tháng này</span></div>
+      <div class="stat-row">
+        <div class="stat"><span class="muted">Tiết kiệm</span><b>5,2 triệu</b><span class="muted">₫</span></div>
+        <div class="stat"><span class="muted">Chi tiêu</span><b>3,4 triệu</b><span class="muted">₫</span></div>
+        <div class="stat"><span class="muted">Tích lũy</span><b>+12%</b><span class="muted">so với tháng trước</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="quick">
+    <button data-go="account"><span>👤</span>Mở tài khoản</button>
+    <button data-go="cards"><span>💳</span>Mở thẻ</button>
+    <button data-go="savings"><span>🌱</span>Tiết kiệm</button>
+    <button data-go="loan"><span>🏦</span>Vay vốn</button>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="section-head"><h2>Giao dịch gần đây</h2><span class="muted">Lịch sử mẫu</span></div>
+      <div class="list">
+        <div class="tx"><div class="tx-icon">🛒</div><div class="tx-info"><b>Mua sắm</b><small>Hôm nay · 09:30</small></div><div class="amount negative">-250.000 ₫</div></div>
+        <div class="tx"><div class="tx-icon">💰</div><div class="tx-info"><b>Nhận tiền</b><small>Hôm qua · 14:12</small></div><div class="amount positive">+1.500.000 ₫</div></div>
+        <div class="tx"><div class="tx-icon">🍜</div><div class="tx-info"><b>Ăn uống</b><small>08/11/2026 · 12:05</small></div><div class="amount negative">-85.000 ₫</div></div>
+        <div class="tx"><div class="tx-icon">🌱</div><div class="tx-info"><b>Gửi tiết kiệm (mẫu)</b><small>05/11/2026 · 10:00</small></div><div class="amount negative">-2.000.000 ₫</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="section-head"><h2>Ưu đãi nổi bật</h2><span>🎁</span></div>
+      <div style="background:linear-gradient(135deg,#e6f8ff,#f0edff);padding:18px;border-radius:15px">
+        <span class="eyebrow" style="color:#28679b">5 CON CÁ BANK</span><h2 style="color:#092b55;margin:9px 0">Bắt đầu hành trình tích lũy</h2><p class="muted" style="line-height:1.6">Tìm hiểu cách gửi tiết kiệm và quản lý khoản tiền của bạn một cách khoa học.</p>
+        <button class="btn" data-go="savings">Khám phá ngay</button>
+      </div>
+      <div class="notice">Lưu ý: Số dư và giao dịch trên ứng dụng đều là dữ liệu minh họa, không phải tiền thật.</div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="account">
+  <div class="banner"><div><h3>👤 Mở tài khoản ngân hàng</h3><p>Đăng ký tài khoản mô phỏng nhanh chóng với vài thông tin cơ bản.</p></div><span class="pill" style="color:#145ca9;border-color:#c8ddf4">Thời lượng giới thiệu: 2 phút</span></div>
+  <div class="card form-card">
+    <div class="steps"><div class="step done"></div><div class="step"></div><div class="step"></div></div>
+    <div class="section-head"><h2>Thông tin đăng ký</h2><span class="muted">Bước 1/3</span></div>
+    <form id="accountForm">
+      <div class="form-grid">
+        <div class="field"><label>Họ và tên</label><input required placeholder="Ví dụ: Nguyễn Văn A"></div>
+        <div class="field"><label>Ngày sinh</label><input required type="date"></div>
+        <div class="field"><label>Email</label><input required type="email" placeholder="email@example.com"></div>
+        <div class="field"><label>Số điện thoại (minh họa)</label><input required inputmode="tel" pattern="[0-9]{9,11}" placeholder="Nhập 9–11 chữ số"></div>
+      </div>
+      <div class="field"><label>Loại tài khoản</label><select><option>Thanh toán cá nhân</option><option>Tài khoản nhận lương</option><option>Tài khoản sinh viên</option></select></div>
+      <p class="hint">Trong thực tế, ngân hàng sẽ xác minh danh tính theo quy định. Không nhập CCCD, mật khẩu, mã OTP hay thông tin thật vào bản demo này.</p>
+      <button class="btn" type="submit">Tạo tài khoản mô phỏng →</button>
+    </form>
+    <div class="result" id="accountResult"></div>
+  </div>
+</section>
+
+<section class="page" id="cards">
+  <div class="banner"><div><h3>💳 Thẻ ngân hàng</h3><p>Lựa chọn loại thẻ phù hợp cho thanh toán và mua sắm.</p></div><span class="pill" style="color:#145ca9;border-color:#c8ddf4">Thời lượng giới thiệu: 2 phút</span></div>
+  <div class="product-grid">
+    <div class="product"><div class="big">💳</div><h3>Thẻ ghi nợ nội địa</h3><p>Thanh toán và rút tiền trong phạm vi hỗ trợ của hệ thống ngân hàng.</p><b>Phù hợp chi tiêu hằng ngày</b><br><br><button class="btn" data-card="Thẻ ghi nợ nội địa">Chọn thẻ này</button></div>
+    <div class="product"><div class="big">🌐</div><h3>Thẻ ghi nợ quốc tế</h3><p>Hỗ trợ thanh toán trực tuyến và tại các điểm chấp nhận thẻ quốc tế.</p><b>Phù hợp mua sắm online</b><br><br><button class="btn" data-card="Thẻ ghi nợ quốc tế">Chọn thẻ này</button></div>
+  </div>
+  <div class="card" style="margin-top:16px"><div class="section-head"><h2>Thẻ của tôi (minh họa)</h2><span class="muted">Thông tin giả lập</span></div><div style="max-width:390px;background:linear-gradient(120deg,#092b55,#1676bb);color:white;border-radius:18px;padding:22px"><div style="display:flex;justify-content:space-between"><b>🐟 5 CON CÁ BANK</b><span>VISA</span></div><div style="font-size:22px;letter-spacing:3px;margin:30px 0 18px">•••• &nbsp;•••• &nbsp;•••• &nbsp;2600</div><div style="display:flex;justify-content:space-between;font-size:11px"><span>LE THI HA<br>CHỦ THẺ</span><span>DEBIT</span></div></div><div class="result" id="cardResult"></div></div>
+</section>
+
+<section class="page" id="savings">
+  <div class="banner"><div><h3>🌱 Gửi tiết kiệm</h3><p>Lập kế hoạch tích lũy và ước tính số tiền nhận được khi đáo hạn.</p></div><span class="pill" style="color:#145ca9;border-color:#c8ddf4">Thời lượng giới thiệu: 3 phút</span></div>
+  <div class="grid">
+    <div class="card form-card">
+      <div class="section-head"><h2>Công cụ tính tiết kiệm</h2><span class="muted">Lãi kép tham khảo</span></div>
+      <div class="field"><label>Số tiền gửi (VNĐ)</label><input id="principal" type="number" min="100000" value="10000000"></div>
+      <div class="form-grid">
+        <div class="field"><label>Kỳ hạn</label><select id="term"><option value="3">3 tháng</option><option value="6">6 tháng</option><option value="12" selected>12 tháng</option><option value="24">24 tháng</option></select></div>
+        <div class="field"><label>Lãi suất năm (%)</label><input id="rate" type="number" min="0" max="30" step=".1" value="5.0"></div>
+      </div>
+      <button class="btn" id="calcSavings" type="button">Tính tiền nhận được</button>
+      <div class="result show" id="savingsResult">Nhập số tiền và chọn kỳ hạn, sau đó bấm tính.</div>
+      <p class="hint">Công thức minh họa: A = P × (1 + r/12)<sup>n</sup>. Lãi suất thực tế tùy ngân hàng, sản phẩm và thời điểm gửi.</p>
+    </div>
+    <div class="card"><div class="section-head"><h2>Lợi ích tiết kiệm</h2></div><div class="list"><div class="tx"><div class="tx-icon">🎯</div><div class="tx-info"><b>Có mục tiêu rõ ràng</b><small>Chủ động kế hoạch tài chính</small></div></div><div class="tx"><div class="tx-icon">📈</div><div class="tx-info"><b>Tích lũy theo thời gian</b><small>Tiền gửi có thể sinh lãi</small></div></div><div class="tx"><div class="tx-icon">🛡️</div><div class="tx-info"><b>Lựa chọn kỳ hạn</b><small>Cân nhắc nhu cầu sử dụng tiền</small></div></div></div></div>
+  </div>
+</section>
+
+<section class="page" id="loan">
+  <div class="banner"><div><h3>🏦 Vay vốn ngân hàng</h3><p>Tham khảo khoản trả góp hằng tháng trước khi đưa ra quyết định vay.</p></div><span class="pill" style="color:#145ca9;border-color:#c8ddf4">Thời lượng giới thiệu: 3 phút</span></div>
+  <div class="grid">
+    <div class="card form-card">
+      <div class="section-head"><h2>Ước tính khoản vay</h2><span class="muted">Trả góp đều</span></div>
+      <div class="field"><label>Số tiền muốn vay (VNĐ)</label><input id="loanAmount" type="number" min="1000000" value="50000000"></div>
+      <div class="form-grid">
+        <div class="field"><label>Thời hạn vay</label><select id="loanMonths"><option value="6">6 tháng</option><option value="12" selected>12 tháng</option><option value="24">24 tháng</option><option value="36">36 tháng</option><option value="60">60 tháng</option></select></div>
+        <div class="field"><label>Lãi suất năm (%)</label><input id="loanRate" type="number" min="0" max="50" step=".1" value="10"></div>
+      </div>
+      <button class="btn" id="calcLoan" type="button">Tính khoản trả góp</button>
+      <div class="result show" id="loanResult">Nhập thông tin khoản vay để xem kết quả ước tính.</div>
+      <p class="hint">Công cụ chỉ mang tính giáo dục, chưa bao gồm phí, bảo hiểm hoặc điều kiện tín dụng. Không phải đề nghị cho vay.</p>
+    </div>
+    <div class="card"><div class="section-head"><h2>Trước khi vay cần biết</h2></div><div class="list"><div class="tx"><div class="tx-icon">🧾</div><div class="tx-info"><b>Đọc kỹ hợp đồng</b><small>Lãi suất, phí và lịch thanh toán</small></div></div><div class="tx"><div class="tx-icon">🧮</div><div class="tx-info"><b>Đánh giá khả năng trả nợ</b><small>Không vay vượt khả năng tài chính</small></div></div><div class="tx"><div class="tx-icon">🔎</div><div class="tx-info"><b>So sánh các lựa chọn</b><small>Tìm hiểu tổng chi phí khoản vay</small></div></div></div></div>
+  </div>
+</section>
+
+<section class="page" id="support">
+  <div class="banner"><div><h3>💬 Trung tâm hỗ trợ</h3><p>Thông tin hướng dẫn sử dụng ứng dụng 5 Con Cá Bank.</p></div><span>🐟</span></div>
+  <div class="card">
+    <div class="section-head"><h2>Câu hỏi thường gặp</h2></div>
+    <details open><summary><b>5 Con Cá Bank có phải ngân hàng thật không?</b></summary><p class="muted">Không. Đây là ứng dụng mô phỏng do sinh viên xây dựng để phục vụ bài tập thuyết trình.</p></details><hr style="border:0;border-top:1px solid var(--line);margin:15px 0">
+    <details><summary><b>Có thể chuyển tiền hoặc rút tiền thật không?</b></summary><p class="muted">Không. Các số dư, thẻ, giao dịch và biểu mẫu đều chỉ để minh họa, không kết nối hệ thống thanh toán.</p></details><hr style="border:0;border-top:1px solid var(--line);margin:15px 0">
+    <details><summary><b>Làm sao để tính tiền tiết kiệm?</b></summary><p class="muted">Chọn mục Gửi tiết kiệm, nhập số tiền, kỳ hạn và lãi suất giả định rồi nhấn nút tính.</p></details><hr style="border:0;border-top:1px solid var(--line);margin:15px 0">
+    <details><summary><b>Làm sao để ước tính khoản vay?</b></summary><p class="muted">Chọn mục Vay vốn, nhập số tiền, thời hạn và lãi suất giả định rồi nhấn nút tính khoản trả góp.</p></details>
+  </div>
+</section>
+<footer>© 2026 5 CON CÁ BANK · SẢN PHẨM MÔ PHỎNG PHỤC VỤ HỌC TẬP<br>Không phải ngân hàng hoặc tổ chức tín dụng; không nhận tiền, phát hành thẻ hay cấp tín dụng thật.</footer>
+</main>
+</div>
+<script>
+const pages=[...document.querySelectorAll('.page')], nav=[...document.querySelectorAll('.nav button')];
+function showPage(id){pages.forEach(p=>p.classList.toggle('active',p.id===id));nav.forEach(n=>n.classList.toggle('active',n.dataset.page===id));window.scrollTo({top:0,behavior:'smooth'});}
+nav.forEach(n=>n.addEventListener('click',()=>showPage(n.dataset.page)));
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.go)));
+const money=n=>new Intl.NumberFormat('vi-VN',{style:'currency',currency:'VND',maximumFractionDigits:0}).format(n);
+document.getElementById('accountForm').addEventListener('submit',e=>{e.preventDefault();let r=document.getElementById('accountResult');r.innerHTML='<b>🎉 Đăng ký mô phỏng thành công!</b><br>Tài khoản demo đã được tạo trên giao diện. Đây không phải tài khoản ngân hàng thật và dữ liệu không được gửi đi đâu.';r.classList.add('show');});
+document.querySelectorAll('[data-card]').forEach(b=>b.addEventListener('click',()=>{let r=document.getElementById('cardResult');r.textContent='Bạn đã chọn '+b.dataset.card+'. Yêu cầu phát hành thẻ demo đã được ghi nhận trên giao diện (không phát hành thẻ thật).';r.classList.add('show');}));
+document.getElementById('calcSavings').addEventListener('click',()=>{let p=Number(document.getElementById('principal').value),m=Number(document.getElementById('term').value),r=Number(document.getElementById('rate').value)/100;if(p<=0||r<0||!Number.isFinite(p+r)){alert('Vui lòng nhập số tiền và lãi suất hợp lệ.');return;}let total=p*Math.pow(1+r/12,m),interest=total-p;let el=document.getElementById('savingsResult');el.innerHTML='<b>Kết quả ước tính</b><br>Tiền gốc: '+money(p)+'<br>Tiền lãi: <b>'+money(interest)+'</b><br>Tổng nhận cuối kỳ: <b>'+money(total)+'</b>';el.classList.add('show');});
+document.getElementById('calcLoan').addEventListener('click',()=>{let p=Number(document.getElementById('loanAmount').value),n=Number(document.getElementById('loanMonths').value),annual=Number(document.getElementById('loanRate').value)/100;if(p<=0||annual<0||!Number.isFinite(p+annual)){alert('Vui lòng nhập số tiền và lãi suất hợp lệ.');return;}let i=annual/12,pay=i===0?p/n:p*i/(1-Math.pow(1+i,-n)),total=pay*n;let el=document.getElementById('loanResult');el.innerHTML='<b>Kết quả ước tính</b><br>Khoản vay: '+money(p)+'<br>Trả mỗi tháng: <b>'+money(pay)+'</b><br>Tổng tiền trả: '+money(total)+'<br>Tổng lãi dự kiến: '+money(total-p);el.classList.add('show');});
+</script>
+</body>
+</html>
